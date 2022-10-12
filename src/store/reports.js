@@ -6,15 +6,14 @@ const normalizeData = (data) => {
     dataObj[report.id] = report;
   });
 
-  console.log("INITIAL DATA ", dataObj);
+  //   console.log("INITIAL DATA ", dataObj);
 
   return dataObj;
 };
 
-const initialState = { reports: normalizeData(initialReports) };
+const initialState = normalizeData(initialReports);
 
 const reportsReducer = (state = initialState, action) => {
-  console.log("setting report state");
   return state;
 };
 
