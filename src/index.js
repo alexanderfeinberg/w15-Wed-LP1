@@ -6,20 +6,21 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import configureStore from "./store";
 
+const store = configureStore();
+
 function Root() {
-  const store = configureStore();
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   );
 }
 
 ReactDOM.render(
   <React.StrictMode>
-    <Root />
+    <Provider store={store}>
+      <Root />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -1,10 +1,10 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
 
-import ReportIndex from './components/ReportIndex';
-import CreateReportForm from './components/CreateReportForm';
-import EditReportForm from './components/EditReportForm';
-import ReportShow from './components/ReportShow';
+import ReportIndex from "./components/ReportIndex";
+import CreateReportForm from "./components/CreateReportForm";
+import EditReportForm from "./components/EditReportForm";
+import ReportShow from "./components/ReportShow";
 
 const App = () => (
   <>
