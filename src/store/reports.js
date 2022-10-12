@@ -1,7 +1,28 @@
 import initialReports from "../data/initial-reports.json";
 
+//Action Strings
 const DELETE_REPORT = "report/deleteReport";
+const LOAD_REPORT = "report/loadReport";
+const ADD_REPORT = "report/addReport";
 
+///
+
+//Action Functions
+export const removeReport = (report) => {
+  return { type: DELETE_REPORT, report: report };
+};
+
+export const loadReport = (report) => {
+  return { type: LOAD_REPORT, report: report };
+};
+
+export const addReport = (report) => {
+  return { type: ADD_REPORT, report: report };
+};
+
+////
+
+//Normalize Init data
 const normalizeData = (data) => {
   const dataObj = {};
   initialReports.forEach((report) => {
@@ -12,25 +33,27 @@ const normalizeData = (data) => {
 
   return dataObj;
 };
-
-export const removeReport = (report) => {
-  return { type: DELETE_REPORT, report: report };
-};
+////
 
 const initialState = normalizeData(initialReports);
 
+//REDUCER FUNCTION
 const reportsReducer = (state = initialState, action) => {
   switch (action.type) {
     case DELETE_REPORT:
-      const newState = {};
-      for (let key of Object.keys(state)) {
-        if (state[key].id !== action.report.id) {
-          newState[key] = state[key];
-        }
-      }
+      let newState = { ...state };
+      delete newState[action.report.id];
       return newState;
+    case LOAD_REPORT:
+      return { ...state };
+    case ADD_REPORT:
+      let report = action.report;
+
+      return { ...state, [report.id]: report };
   }
+
   return state;
 };
+///
 
 export default reportsReducer;

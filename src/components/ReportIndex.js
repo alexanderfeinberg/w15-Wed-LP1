@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import ReportIndexItem from "./ReportIndexItem";
-import { useSelector, useDispatch } from "react-redux";
-import { deleteReport } from "../store/reports";
+import { useSelector } from "react-redux";
 
 const ReportIndex = () => {
   const allReports = useSelector((state) => state.reports);
