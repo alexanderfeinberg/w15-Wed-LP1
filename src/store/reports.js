@@ -4,6 +4,7 @@ import initialReports from "../data/initial-reports.json";
 const DELETE_REPORT = "report/deleteReport";
 const LOAD_REPORT = "report/loadReport";
 const ADD_REPORT = "report/addReport";
+const RESET_DATA = "report/resetData";
 
 ///
 
@@ -18,6 +19,10 @@ export const loadReport = (report) => {
 
 export const addReport = (report) => {
   return { type: ADD_REPORT, report: report };
+};
+
+export const resetDataAction = () => {
+  return { type: RESET_DATA };
 };
 
 ////
@@ -48,8 +53,9 @@ const reportsReducer = (state = initialState, action) => {
       return { ...state };
     case ADD_REPORT:
       let report = action.report;
-
       return { ...state, [report.id]: report };
+    case RESET_DATA:
+      return normalizeData(initialReports);
   }
 
   return state;
